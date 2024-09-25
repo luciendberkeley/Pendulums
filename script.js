@@ -36,6 +36,8 @@ function Start() {
 	clickY = 0;
 
 	CreateSlider(50, 500, 250, "Length");
+	CreateSlider(0, 100, 98, "Gravity");
+	CreateSlider(0, 10, 1, "Speed");
 }
 
 function dist(x1, y1, x2, y2) {
@@ -45,6 +47,8 @@ function dist(x1, y1, x2, y2) {
 // Runs every frame
 function Update() {
 	length = backendSliders["Length"].value;
+	a_grav = backendSliders["Gravity"].value / 10;
+	speed = backendSliders["Speed"].value;
 
 	if (holdingOut) {
 		theta_0 =
@@ -80,7 +84,7 @@ document.addEventListener("mousedown", (event) => {
 	let x = event.x;
 	let y = event.y;
 
-	if (dist(x, y, px, height - py) <= 15) {
+	if (dist(x, y, px, height - py) <= 30) {
 		holdingOut = true;
 	}
 
